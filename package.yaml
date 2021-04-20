@@ -1,0 +1,45 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: batching
+version: 0.1.0.0
+category: Algorithms
+synopsis: An Applicative Functor deferring actions to run in a batch later.
+description: |
+  This provides the type Batching, an Applicative which defers request-response
+  exchanges of a fixed type, to be performed in a single batch.  This means you
+  can write code that appears to issue requests and immediately receive their
+  responses, but process the requests jointly all at once.
+license: Apache-2.0
+author: Andrew Pritchard <awpr@google.com>
+copyright: 2019-2021 Google LLC
+maintainer: Andrew Pritchard <awpr@google.com>
+github: google/hs-batching
+
+# Note: this causes CHANGELOG.md to be included in Hackage distributions.
+extra-source-files:
+  CHANGELOG.md
+
+ghc-options: -Wall -Werror
+
+dependencies:
+  - base
+  - primitive
+  - sint
+  - short-vec
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Control.Batching

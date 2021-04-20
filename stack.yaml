@@ -1,0 +1,28 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+resolver: lts-17.9
+
+packages:
+- .
+
+extra-deps:
+- github: google/hs-attenuation
+  commit: 3243f2586e5908a09fdd0c5ee32b0adc72271fc4
+- github: google/hs-fin-vec
+  commit: 08c9ddb952750d46b093b0a55463ab689fe425e6
+  subdirs:
+    - fin-int
+    - short-vec
+    - sint
