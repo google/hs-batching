@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2f92e66bb048d79c389264e8234d04c490a14c7779a7de45ec045875a71e59f8
+-- hash: f1c2d5f392480c489a4175b17698ddd4bbb2b39ac0f84912c9b22cae5f5fa73b
 
 name:           batching
 version:        0.1.0.0
@@ -38,8 +38,8 @@ library
       src
   ghc-options: -Wall -Werror
   build-depends:
-      base
-    , primitive
-    , short-vec
-    , sint
+      base >=4.12 && <4.16
+    , primitive >=0.1 && <0.8
+    , short-vec >=0.1 && <0.2
+    , sint >=0.1 && <0.2
   default-language: Haskell2010

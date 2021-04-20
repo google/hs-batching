@@ -34,10 +34,10 @@ extra-source-files:
 ghc-options: -Wall -Werror
 
 dependencies:
-  - base
-  - primitive
-  - sint
-  - short-vec
+  - base >= 4.12 && < 4.16
+  - primitive >= 0.1 && < 0.8
+  - sint >= 0.1 && < 0.2
+  - short-vec >= 0.1 && < 0.2
 
 library:
   source-dirs: src
