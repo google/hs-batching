@@ -19,10 +19,13 @@ packages:
 
 extra-deps:
 - github: google/hs-attenuation
-  commit: 3243f2586e5908a09fdd0c5ee32b0adc72271fc4
+  commit: 6d9292cc0eaa549821d556405658500e35e9b166
 - github: google/hs-fin-vec
-  commit: 08c9ddb952750d46b093b0a55463ab689fe425e6
+  commit: 618599e98eb3536486128be6a7350553a4b308de
   subdirs:
     - fin-int
     - short-vec
     - sint
+
+ghc-options:
+  "$locals": -Wall -Werror

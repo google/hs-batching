@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f1c2d5f392480c489a4175b17698ddd4bbb2b39ac0f84912c9b22cae5f5fa73b
+-- hash: 6f99773f88f6b656358f7d06f600225bdba5857cfa207fe9210d30c00b0248cd
 
 name:           batching
 version:        0.1.0.0
@@ -36,7 +36,6 @@ library
       Paths_batching
   hs-source-dirs:
       src
-  ghc-options: -Wall -Werror
   build-depends:
       base >=4.12 && <4.16
     , primitive >=0.1 && <0.8
