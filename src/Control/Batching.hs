@@ -241,17 +241,17 @@ batchRequest rqs0 =
 -- | Given an allocator function in any 'Functor', run a 'Batching' computation.
 runBatching
   :: Functor f
-  => (forall n. SInt n -> Vec n rq -> f (Vec n rs))
+  => (forall n. Vec n rq -> f (Vec n rs))
   -> Batching rq rs a -> f a
 runBatching f (Batching go) = go
-  (\n q rqs -> q . vvFromVec <$> f n (vbToVec' n rqs))
+  (\n q rqs -> q . vvFromVec <$> f (vbToVec' n rqs))
   sintVal
   (const id)
   nil
 {-# INLINE runBatching #-}
 
 runBatching_ :: (forall n. Vec n rq -> Vec n rs) -> Batching rq rs a -> a
-runBatching_ f = runIdentity . runBatching (\_ -> Identity . f)
+runBatching_ f = runIdentity . runBatching (Identity . f)
 {-# INLINE runBatching_ #-}
 
 -- TODO(awpr): consider adding a Batched monad that supports many batches of

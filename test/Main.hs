@@ -43,10 +43,10 @@ main = defaultMain
       runBatching_ rev (traverse request xs) === reverse xs
 
   , testProperty "list?" $ \ (xs :: [Int]) ->
-      runBatching (\_ rqs -> [rqs, rev rqs]) (traverse request xs) ===
+      runBatching (\rqs -> [rqs, rev rqs]) (traverse request xs) ===
         [xs, reverse xs]
 
   , testProperty "silliness" $ \ (xs :: [Int]) ->
-      runBatching (\_ rqs -> Const (length rqs)) (traverse request xs) ===
+      runBatching (\rqs -> Const (length rqs)) (traverse request xs) ===
         Const (length xs)
   ]
