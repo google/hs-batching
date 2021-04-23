@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6f99773f88f6b656358f7d06f600225bdba5857cfa207fe9210d30c00b0248cd
+-- hash: 8936a5cb6e45b5103dfe0d29f00e470867581f0bfafd31536c356315143191dd
 
 name:           batching
 version:        0.1.0.0
@@ -41,4 +41,22 @@ library
     , primitive >=0.1 && <0.8
     , short-vec >=0.1 && <0.2
     , sint >=0.1 && <0.2
+  default-language: Haskell2010
+
+test-suite Batching-test
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Paths_batching
+  hs-source-dirs:
+      test
+  build-depends:
+      QuickCheck
+    , base >=4.12 && <4.16
+    , batching
+    , primitive >=0.1 && <0.8
+    , short-vec
+    , sint >=0.1 && <0.2
+    , test-framework
+    , test-framework-quickcheck2
   default-language: Haskell2010

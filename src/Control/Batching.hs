@@ -25,13 +25,14 @@
 {-# LANGUAGE TypeOperators #-}
 
 module Control.Batching
-         ( Batching, request, batchRequest, runBatching
+         ( Batching, request, batchRequest, runBatching, runBatching_
          ) where
 
 import Control.Applicative (Applicative(..))
 import Control.Monad.ST (runST)
 import Data.Foldable (sequenceA_, toList)
 import qualified Data.Foldable as F
+import Data.Functor.Identity (Identity(..))
 import GHC.TypeNats (type (+), Nat)
 
 import qualified Data.Primitive.Array as A
@@ -248,6 +249,10 @@ runBatching f (Batching go) = go
   (const id)
   nil
 {-# INLINE runBatching #-}
+
+runBatching_ :: (forall n. Vec n rq -> Vec n rs) -> Batching rq rs a -> a
+runBatching_ f = runIdentity . runBatching (\_ -> Identity . f)
+{-# INLINE runBatching_ #-}
 
 -- TODO(awpr): consider adding a Batched monad that supports many batches of
 -- requests:

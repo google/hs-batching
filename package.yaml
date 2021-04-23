@@ -41,3 +41,14 @@ library:
   source-dirs: src
   exposed-modules:
     - Control.Batching
+
+tests:
+  Batching-test:
+    source-dirs: test
+    main: Main.hs
+    dependencies:
+      - batching
+      - short-vec
+      - test-framework
+      - test-framework-quickcheck2
+      - QuickCheck
