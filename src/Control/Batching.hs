@@ -24,6 +24,8 @@
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE TypeOperators #-}
 
+-- | An 'Applicative' for deferring "requests" to handle them all in bulk.
+
 module Control.Batching
          ( Batching, request, batchRequest, runBatching, runBatching_
          ) where
@@ -93,13 +95,6 @@ vvFromVec = VecView . toList
 -- getBatchRequests  :: SizedBatch n rq rs a -> Vec n rq
 -- putBatchResponses :: SizedBatch n rq rs a -> Vec n rs -> a
 
--- | The bulk request-response Applicative.
---
--- A value of type @Batching rq rs a@ describes a computation that gathers some
--- number of @rq@ request values, expects the same number of @rs@ response
--- values, and ultimately returns an @a@ result value derived from the
--- responses.
-
 -- -- Start with a simple version: contains the requests and a function to --
 -- consume the responses.
 -- data Batching0 rq rs a = forall n. Batching0
@@ -141,10 +136,18 @@ vvFromVec = VecView . toList
 --   - prepends some of its own requests to the VecBuilder.
 --   - passes them on to the continuation and returns its result.
 
--- | Issues @rq@ requests, gets @rs@ responses, and gives an @a@ result.
+-- | The bulk request-response Applicative.
+--
+-- A value of type @Batching rq rs a@ describes a computation that gathers some
+-- number of @rq@ request values, expects the same number of @rs@ response
+-- values, and ultimately returns an @a@ result value derived from the
+-- responses.
 --
 -- This can be used to apply an offline resource allocation algorithm to code
 -- written as if allocation requests were satisfied incrementally.
+--
+-- This synergizes well with @-XApplicativeDo@, which allows using do-notation
+-- for this type, as long as requests do not depend on earlier responses.
 newtype Batching rq rs a = Batching
 -- This is essentially the same as the Ap type from
 -- Control.Applicative.Free.Fast, but specialized to lists of requests and
@@ -250,6 +253,7 @@ runBatching f (Batching go) = go
   nil
 {-# INLINE runBatching #-}
 
+-- | Like 'runBatching', but without a 'Functor' (or implicitly in 'Identity').
 runBatching_ :: (forall n. Vec n rq -> Vec n rs) -> Batching rq rs a -> a
 runBatching_ f = runIdentity . runBatching (Identity . f)
 {-# INLINE runBatching_ #-}
