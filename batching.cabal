@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f29b5cad2038731db45d0445798625edbcc15fb53702a01d107cbfcd0279bd1a
+-- hash: 6b936accce9d03d1d1d1f031ae5b9de9fac144263fd1b7693f569693ee4c3d48
 
 name:           batching
 version:        0.1.0.0
@@ -32,8 +32,6 @@ source-repository head
 library
   exposed-modules:
       Control.Batching
-  other-modules:
-      Paths_batching
   hs-source-dirs:
       src
   build-depends:
@@ -46,8 +44,6 @@ library
 test-suite Batching-test
   type: exitcode-stdio-1.0
   main-is: Main.hs
-  other-modules:
-      Paths_batching
   hs-source-dirs:
       test
   build-depends:
