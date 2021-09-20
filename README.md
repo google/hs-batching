@@ -2,9 +2,17 @@
 
 An Applicative Functor deferring actions to run in a batch later.
 
+[![Stack CI](https://github.com/google/hs-batching/actions/workflows/stack-ci.yml/badge.svg)](https://github.com/google/hs-batching/actions/workflows/stack-ci.yml)
+
 ## Disclaimer
 
 This is not an officially supported Google product.
+
+## Hackage Status
+
+* [![batching](https://badgen.net/runkit/awpr/hackage/v/batching?icon=haskell&cache=600)](https://hackage.haskell.org/package/batching)
+  ![Uploaded](https://badgen.net/runkit/awpr/hackage/t/batching?cache=600)
+  ![Haddock](https://badgen.net/runkit/awpr/hackage/d/batching?cache=600)
 
 ## Overview
 
