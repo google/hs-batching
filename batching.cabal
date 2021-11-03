@@ -3,8 +3,6 @@ cabal-version: 1.12
 -- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
---
--- hash: ba4e0829223289c7fd76d00db267319835303f924b1798d3bdd924d10e289559
 
 name:           batching
 version:        0.1.0.0
@@ -35,7 +33,7 @@ library
   hs-source-dirs:
       src
   build-depends:
-      base >=4.12 && <4.16
+      base >=4.12 && <4.17
     , primitive >=0.1 && <0.8
     , short-vec ==0.1.*
     , sint >=0.1 && <0.3
@@ -48,7 +46,7 @@ test-suite Batching-test
       test
   build-depends:
       QuickCheck
-    , base >=4.12 && <4.16
+    , base >=4.12 && <4.17
     , batching
     , primitive >=0.1 && <0.8
     , short-vec
